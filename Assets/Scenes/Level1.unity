@@ -658,6 +658,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 7726208980626243355, guid: c5efe718bc34a8f4eab334e24e9cd6dd, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300002, guid: 47616bd0cda748d4cbedcfc908506b9d, type: 3}
     - target: {fileID: 7726208980626243359, guid: c5efe718bc34a8f4eab334e24e9cd6dd, type: 3}
       propertyPath: m_Name
       value: PickUp (4)
@@ -1281,6 +1285,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 7726208980626243355, guid: c5efe718bc34a8f4eab334e24e9cd6dd, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 7726208980626243359, guid: c5efe718bc34a8f4eab334e24e9cd6dd, type: 3}
       propertyPath: m_Name
       value: PickUp (1)

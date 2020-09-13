@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour
     public static int count;
     private float movementX;
     private float movementY;
+    private bool increaseSpeed = false;
+    private bool newStar = false;
+    private float startTime;
+    private float specialCountdown = 5.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +46,17 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
 
-        rb.AddForce(movement * speed);
+        if(increaseSpeed == false)
+        {
+            rb.AddForce(movement * speed);
+        }
+        else
+        {
+            rb.AddForce(movement * 18);
+            updateTimer();
+        }
+
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -54,6 +68,34 @@ public class PlayerController : MonoBehaviour
 
             SetCountText();
         }
+        else if(other.gameObject.CompareTag("SpecialPickUp"))
+        {
+            other.gameObject.SetActive(false);
+            newStar = true;
+            increaseSpeed = true;
+            //startTime = Time.time;
+        }
     }
+
+    void updateTimer()
+    {
+        if(newStar == false)
+        {
+            specialCountdown -= Time.deltaTime;
+
+        }
+        else
+        {
+            specialCountdown = 5.0f;
+            specialCountdown -= Time.deltaTime;
+            newStar = false;
+        }
+        if (specialCountdown <= 0)
+        {
+            increaseSpeed = false;
+        }
+
+    }
+
 
 }

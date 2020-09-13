@@ -15,6 +15,7 @@ public class Timer : MonoBehaviour
     private bool playerWon; 
     private int playerCount;
     public GameObject cube;
+    public GameObject specialStarfish;
 
     // Start is called before the first frame update
     void Start()
@@ -78,6 +79,7 @@ public class Timer : MonoBehaviour
         keepTimer = false;
 
         cube.SetActive(false);
+        specialStarfish.SetActive(false);
     }
 
     void playerWins()

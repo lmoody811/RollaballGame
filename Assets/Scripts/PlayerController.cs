@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
     void SetCountText()
     {
-        countText.text = "Count: " + count.ToString();
+        countText.text = "Points: " + count.ToString();
 
     }
 

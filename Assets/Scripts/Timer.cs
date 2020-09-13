@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
     public GameObject lostTextObject;
     public TextMeshProUGUI timer;
     private float startTime;
-    private float countdown = 15.0f;
+    private float countdown = 60.0f;
     private bool keepTimer;
     private bool playerWon; 
     private int playerCount;

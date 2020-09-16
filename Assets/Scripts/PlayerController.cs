@@ -56,6 +56,8 @@ public class PlayerController : MonoBehaviour
             updateTimer();
         }
 
+
+
         
     }
 
@@ -73,7 +75,7 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             newStar = true;
             increaseSpeed = true;
-            //startTime = Time.time;
+      
         }
     }
 

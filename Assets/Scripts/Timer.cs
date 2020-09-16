@@ -3,27 +3,27 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
-    public GameObject winTextObject;
-    public GameObject lostTextObject;
     public TextMeshProUGUI timer;
     private float startTime;
-    private float countdown = 60.0f;
+    public float countdown;
     private bool keepTimer;
     private bool playerWon; 
     private int playerCount;
     public GameObject cube;
     public GameObject specialStarfish;
+    public GameObject level;
+    public string newGameScene;
 
     // Start is called before the first frame update
     void Start()
     {
-        winTextObject.SetActive(false);
-        lostTextObject.SetActive(false);
+        timer.text = "Timer: " + countdown + ".0";
 
-        startTimer();
+        StartCoroutine(showLevel());
     }
 
     // Update is called once per frame
@@ -35,11 +35,11 @@ public class Timer : MonoBehaviour
         {
             playerWins();
         }
-        if (keepTimer == true)
+        else if (keepTimer == true)
         {
             updateTimer();
         }
-        if(keepTimer == false && playerWon == false)
+        else if(keepTimer == false && playerWon == false)
         {
             playerLoses();
         }
@@ -71,23 +71,39 @@ public class Timer : MonoBehaviour
         }
 
     }
+    void playerWins()
+    {
+        string countdownTime = (countdown % 60).ToString("f1");
+        timer.text = "Timer: " + countdownTime;
+        keepTimer = false;
+        playerWon = true;
+
+        SceneManager.LoadScene(newGameScene);
+    }
 
     void playerLoses()
     {
-        timer.text = "Timer: 0.0";
-        lostTextObject.SetActive(true);
+        //timer.text = "Timer: 0.0";
         keepTimer = false;
 
         cube.SetActive(false);
         specialStarfish.SetActive(false);
     }
 
-    void playerWins()
-    {
-        string countdownTime = (countdown % 60).ToString("f1");
-        timer.text = "Timer: " + countdownTime;
-        winTextObject.SetActive(true);
-        keepTimer = false;
-        playerWon = true;
+    
+
+
+    IEnumerator showLevel()
+    { 
+
+        yield return new WaitForSeconds(3);
+
+        cube.SetActive(true);
+        specialStarfish.SetActive(true);
+
+        level.SetActive(false);
+
+        startTimer();
+
     }
 }

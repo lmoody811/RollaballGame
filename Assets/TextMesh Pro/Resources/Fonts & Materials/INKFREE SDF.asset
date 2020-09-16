@@ -122,6 +122,7 @@ Material:
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
@@ -130,6 +131,9 @@ Material:
     - _ScaleRatioC: 1
 =======
     - _OutlineWidth: 0.306
+=======
+    - _OutlineWidth: 0.177
+>>>>>>> parent of 32c4ae3... Changed font for level 1
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333

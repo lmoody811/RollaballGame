@@ -27,12 +27,12 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void showHighScores()
     {
-        newGameBTN.SetActive(false);
+        newGameBTN.SetActive(false); 
         highScoresBTN.SetActive(false);
         quitGameBTN.SetActive(false);
         gameTitleText.text = "";

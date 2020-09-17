@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI countText;
 
     private Rigidbody rb;
+    private Dictionary<int, string> highScores = new Dictionary<int, string>();
     public static int count;
     private float movementX;
     private float movementY;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private bool newStar = false;
     private float startTime;
     private float specialCountdown = 5.0f;
+    private
 
     // Start is called before the first frame update
     void Start()
@@ -58,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -75,7 +77,7 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             newStar = true;
             increaseSpeed = true;
-      
+
         }
     }
 

@@ -11,17 +11,20 @@ public class Timer : MonoBehaviour
     private float startTime;
     public float countdown;
     private bool keepTimer;
-    private bool playerWon; 
+    private bool playerWon;
     private int playerCount;
     public GameObject cube;
     public GameObject specialStarfish;
     public GameObject level;
     public string newGameScene;
+    private bool showGame;
 
     // Start is called before the first frame update
     void Start()
     {
         timer.text = "Timer: " + countdown + ".0";
+        showGame = true;
+        MainMenu.gamePlayed = true;
 
         StartCoroutine(showLevel());
     }
@@ -29,8 +32,8 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerCount = PlayerController.count;        
-        
+        playerCount = PlayerController.count;
+
         if (playerCount == 12)
         {
             playerWins();
@@ -39,7 +42,7 @@ public class Timer : MonoBehaviour
         {
             updateTimer();
         }
-        else if(keepTimer == false && playerWon == false)
+        else if(keepTimer == false && playerWon == false && showGame == false)
         {
             playerLoses();
         }
@@ -63,38 +66,42 @@ public class Timer : MonoBehaviour
         if (countdown > 0)
         {
             string countdownTime = (countdown % 60).ToString("f1");
-            timer.text = "Timer: " + countdownTime;         
+            timer.text = "Timer: " + countdownTime;
         }
         else
         {
-            keepTimer = false;                                // time is up 
+            keepTimer = false;                                // time is up
+            showGame = false;
         }
 
     }
-    void playerWins()
+    private void playerWins()
     {
         string countdownTime = (countdown % 60).ToString("f1");
         timer.text = "Timer: " + countdownTime;
         keepTimer = false;
         playerWon = true;
 
+
         SceneManager.LoadScene(newGameScene);
+
     }
 
-    void playerLoses()
+    private void playerLoses()
     {
         //timer.text = "Timer: 0.0";
         keepTimer = false;
 
         cube.SetActive(false);
         specialStarfish.SetActive(false);
-    }
 
-    
+
+        SceneManager.LoadScene("Main Menu");
+    }
 
 
     IEnumerator showLevel()
-    { 
+    {
 
         yield return new WaitForSeconds(3);
 
@@ -106,4 +113,7 @@ public class Timer : MonoBehaviour
         startTimer();
 
     }
+
+
+
 }

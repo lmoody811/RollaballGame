@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -46,6 +47,10 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate ()
     {
+
+        if(Keyboard.current.escapeKey.wasPressedThisFrame) {
+          SceneManager.LoadScene("Main Menu");
+        }
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
 
         if(increaseSpeed == false)

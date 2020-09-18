@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private float specialCountdown = 5.0f;
     public GameObject inputField;
     public GameObject enterBTN;
-    string playerName;
+    public static string playerName;
 
 
     // Start is called before the first frame update
@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
             updateTimer();
         }
 
-        if(Timer.keepTimer == false && Timer.playerWon == false) {
+        if(Timer.showInputBox == true) {
           showInputField();         //need to fix this somehow
         }
     }

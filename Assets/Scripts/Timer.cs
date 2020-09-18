@@ -10,14 +10,15 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI timer;
     private float startTime;
     public float countdown;
-    public static bool keepTimer;
-    public static bool playerWon;
+    public bool keepTimer;
+    public bool playerWon;
     private int playerCount;
     public GameObject cube;
     public GameObject specialStarfish;
     public GameObject level;
     public string newGameScene;
     private bool showGame;
+    public static bool showInputBox;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class Timer : MonoBehaviour
         timer.text = "Timer: " + countdown + ".0";
         showGame = true;
         MainMenu.gamePlayed = true;
+        showInputBox = false;
 
         StartCoroutine(showLevel());
     }
@@ -95,6 +97,7 @@ public class Timer : MonoBehaviour
         cube.SetActive(false);
         specialStarfish.SetActive(false);
 
+        showInputBox = true;
       }
 
     IEnumerator showLevel()

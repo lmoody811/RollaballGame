@@ -3800,8 +3800,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4396,6 +4396,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: {fileID: 1295538758}
   countdown: 10
+  keepTimer: 0
+  playerWon: 0
   cube: {fileID: 830843494}
   specialStarfish: {fileID: 1274336325}
   level: {fileID: 1565566529}

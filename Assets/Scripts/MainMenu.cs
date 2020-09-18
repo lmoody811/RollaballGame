@@ -17,7 +17,6 @@ public class MainMenu : MonoBehaviour
     public TextMeshProUGUI gameTitleText;
     static public bool gamePlayed;
     private Dictionary<string, int> highScores = new Dictionary<string, int>();
-    private string playersName;
 
 
     // Start is called before the first frame update
@@ -32,11 +31,7 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetString("HighScores", "");
       }
 
-      if(gamePlayed == true) {
-        checkForHighScores();
-      }
-      else {
-      }
+      checkForHighScores();
 
     }
 
@@ -62,7 +57,7 @@ public class MainMenu : MonoBehaviour
         int i = 1;
         foreach (KeyValuePair<string, int> name in highScores)
           {
-            highScoreNames.text += i + ". Name: " + name.Key + " Score: " + name.Value + Environment.NewLine;
+            highScoreNames.text += i  + ". " + name.Key + "  " + name.Value + Environment.NewLine;
             i++;
           }
 
@@ -74,16 +69,15 @@ public class MainMenu : MonoBehaviour
       getSavedScores();
 
       if(highScores.Count == 0 && gamePlayed == true) {
-        highScores["Brayan"] = PlayerController.count;
+        highScores[PlayerController.playerName] = PlayerController.count;
       }
       else if(gamePlayed == true){
-          highScores["Lauren"] = PlayerController.count;
-          highScores.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+          highScores[PlayerController.playerName] = PlayerController.count;
+          highScores = highScores.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
           if(highScores.Count == 11) {
               highScores.Remove(highScores.Keys.Last());
-          }
-
       }
+    }
 
       highScores = highScores.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
       saveScores();
@@ -108,17 +102,11 @@ public class MainMenu : MonoBehaviour
     private void getSavedScores() {
 
         string scores = PlayerPrefs.GetString("HighScores");
-        Debug.Log(scores);
-
 
         int nameIndex;
-        int newNameIndex;
-        int scoreIndex;
-        int newScoreIndex;
         int score;
         string name;
         string stringScore;
-        int length;
         string[] savedHighScores = scores.Split(',');
 
 
@@ -130,9 +118,6 @@ public class MainMenu : MonoBehaviour
 
               stringScore = savedHighScores[i].Split(' ').Last();
               score = int.Parse(stringScore);
-
-              Debug.Log(name);
-              Debug.Log(score);
 
               highScores[name] = score;
             }

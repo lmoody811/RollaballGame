@@ -18,6 +18,8 @@ public class Timer : MonoBehaviour
     public GameObject level;
     public string newGameScene;
     private bool showGame;
+    public GameObject InputField;
+    public string playerName;
 
     // Start is called before the first frame update
     void Start()
@@ -95,11 +97,18 @@ public class Timer : MonoBehaviour
         cube.SetActive(false);
         specialStarfish.SetActive(false);
 
-
-        SceneManager.LoadScene("Main Menu");
+        storeName();
     }
 
 
+    private void storeName() {
+      playerName = InputField.GetComponent<TMP_InputField>().text;
+
+    }
+
+    public void switchToMenu() { 
+      SceneManager.LoadScene("Main Menu");
+    }
     IEnumerator showLevel()
     {
 

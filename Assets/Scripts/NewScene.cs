@@ -10,13 +10,13 @@ public class NewScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void NewGame()
@@ -27,5 +27,9 @@ public class NewScene : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();                        // found in this YouTube video: https://www.youtube.com/watch?v=BjEqZfK15Ws
+    }
+
+    public void switchToMenu() {
+      SceneManager.LoadScene("Main Menu");
     }
 }

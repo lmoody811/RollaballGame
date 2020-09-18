@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     private bool newStar = false;
     private float startTime;
     private float specialCountdown = 5.0f;
-    private
 
     // Start is called before the first frame update
     void Start()

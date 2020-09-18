@@ -17,6 +17,7 @@ public class MainMenu : MonoBehaviour
     public TextMeshProUGUI gameTitleText;
     static public bool gamePlayed;
     private Dictionary<string, int> highScores = new Dictionary<string, int>();
+    private string playersName;
 
 
     // Start is called before the first frame update
@@ -27,12 +28,14 @@ public class MainMenu : MonoBehaviour
       scoreTitleText.text = "";
       highScoreNames.text = "";
 
+      if(PlayerPrefs.HasKey("HighScores") == false) {
+        PlayerPrefs.SetString("HighScores", "");
+      }
 
-      if(gamePlayed == false) {
-        PlayerPrefs.SetInt("DictionaryCount", 0);
+      if(gamePlayed == true) {
+        checkForHighScores();
       }
       else {
-        checkForHighScores();
       }
 
     }
@@ -56,11 +59,12 @@ public class MainMenu : MonoBehaviour
     }
 
     private void displayHighScores() {
-
-        for(int i = 0; i < highScores.Count; i++) {
-            highScoreNames.text += (i+1) + ". " + highScores.ElementAt(i).Key +
-            " Points: " + highScores.ElementAt(i).Value + "\r\n";
-        }
+        int i = 1;
+        foreach (KeyValuePair<string, int> name in highScores)
+          {
+            highScoreNames.text += i + ". Name: " + name.Key + " Score: " + name.Value + Environment.NewLine;
+            i++;
+          }
 
     }
 
@@ -70,60 +74,69 @@ public class MainMenu : MonoBehaviour
       getSavedScores();
 
       if(highScores.Count == 0 && gamePlayed == true) {
-        int index = 0;
         highScores["Brayan"] = PlayerController.count;
-        PlayerPrefs.SetInt("Brayan", PlayerController.count);
-        PlayerPrefs.SetString("Brayan", index.ToString());
-        PlayerPrefs.SetInt("DictionaryCount", 1);
       }
-      else {
-
-        foreach (KeyValuePair<string, int> name in highScores.ToList())
-          {
-            if(PlayerController.count > name.Value) {
-              highScores["Lauren"] = PlayerController.count;
-            }
+      else if(gamePlayed == true){
+          highScores["Lauren"] = PlayerController.count;
+          highScores.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+          if(highScores.Count == 11) {
+              highScores.Remove(highScores.Keys.Last());
           }
 
-        highScores.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
-        if(highScores.Count == 11) {
-            highScores.Remove(highScores.Keys.Last());
-        }
-
-        saveScores();
-
       }
 
+      highScores = highScores.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+      saveScores();
     }
 
 
     private void saveScores() {
 
-      int t = 1;
+      string scoreCount = highScores.Count.ToString();
+      string NameAndScore = "";
+      string newName = "";
 
       foreach (KeyValuePair<string, int> name in highScores)
         {
-          PlayerPrefs.SetInt(name.Key, name.Value);
-          PlayerPrefs.SetString(name.Key, t.ToString());
-
-          t++;
+            newName = name.Key + " " + name.Value.ToString() + ",";
+            NameAndScore += newName;
         }
-
-      PlayerPrefs.SetInt("DictionaryCount", highScores.Count);
-
+        PlayerPrefs.SetString("HighScores", NameAndScore);
+        PlayerPrefs.Save();
     }
 
     private void getSavedScores() {
-        /*int count = PlayerPrefs.GetInt("DictionaryCount");
-        for(int i = 0; i < count; i++) {
-          highScores[(PlayerPrefs.GetString(i.ToString()))] = PlayerPrefs.GetInt(PlayerPrefs.GetString(i.ToString()));
-        }*/
 
-        int count = PlayerPrefs.GetInt("DictionaryCount");
-        Debug.Log(count);
-        for(int i = 0; i < count; i ++ ) {
-          Debug.Log(PlayerPrefs.GetString("1"));
-        }
+        string scores = PlayerPrefs.GetString("HighScores");
+        Debug.Log(scores);
+
+
+        int nameIndex;
+        int newNameIndex;
+        int scoreIndex;
+        int newScoreIndex;
+        int score;
+        string name;
+        string stringScore;
+        int length;
+        string[] savedHighScores = scores.Split(',');
+
+
+          for(int i = 0; i < savedHighScores.Length; i++) {
+
+            if(savedHighScores[i] != "") {
+              nameIndex = savedHighScores[i].IndexOf(' ');
+              name = savedHighScores[i].Substring(0, nameIndex);
+
+              stringScore = savedHighScores[i].Split(' ').Last();
+              score = int.Parse(stringScore);
+
+              Debug.Log(name);
+              Debug.Log(score);
+
+              highScores[name] = score;
+            }
+          }
 
     }
 

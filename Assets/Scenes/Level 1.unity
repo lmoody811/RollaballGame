@@ -4395,7 +4395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 1295538758}
-  countdown: 10
+  countdown: 50
   keepTimer: 0
   playerWon: 0
   cube: {fileID: 830843494}

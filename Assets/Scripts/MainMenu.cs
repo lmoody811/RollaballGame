@@ -12,7 +12,9 @@ public class MainMenu : MonoBehaviour
     public GameObject newGameBTN;
     public GameObject highScoresBTN;
     public GameObject quitGameBTN;
+    public TextMeshProUGUI highScoreTitles;
     public TextMeshProUGUI highScoreNames;
+    public TextMeshProUGUI highScorePoints;
     public TextMeshProUGUI scoreTitleText;
     public TextMeshProUGUI gameTitleText;
     static public bool gamePlayed;
@@ -26,6 +28,8 @@ public class MainMenu : MonoBehaviour
       backBTN.SetActive(false);
       scoreTitleText.text = "";
       highScoreNames.text = "";
+      highScorePoints.text = "";
+      highScoreTitles.text = "";
 
       if(PlayerPrefs.HasKey("HighScores") == false) {
         PlayerPrefs.SetString("HighScores", "");
@@ -48,6 +52,7 @@ public class MainMenu : MonoBehaviour
         gameTitleText.text = "";
 
         scoreTitleText.text = "High Scores";
+        highScoreTitles.text = "Name        Score";
         backBTN.SetActive(true);
 
         displayHighScores();
@@ -57,10 +62,10 @@ public class MainMenu : MonoBehaviour
         int i = 1;
         foreach (KeyValuePair<string, int> name in highScores)
           {
-            highScoreNames.text += i  + ". " + name.Key + "  " + name.Value + Environment.NewLine;
+            highScoreNames.text += i  + ". " + name.Key + Environment.NewLine;
+            highScorePoints.text += name.Value + Environment.NewLine;
             i++;
           }
-
     }
 
 
@@ -131,6 +136,8 @@ public class MainMenu : MonoBehaviour
         scoreTitleText.text = "";
 
         highScoreNames.text = "";
+        highScorePoints.text = "";
+        highScoreTitles.text = "";
 
         gameTitleText.text = "Beach Ball";
         newGameBTN.SetActive(true);

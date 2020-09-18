@@ -10,8 +10,8 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI timer;
     private float startTime;
     public float countdown;
-    static public bool keepTimer;
-    static public bool playerWon;
+    public static bool keepTimer;
+    public static bool playerWon;
     private int playerCount;
     public GameObject cube;
     public GameObject specialStarfish;

@@ -35,8 +35,13 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetString("HighScores", "");
       }
 
-      checkForHighScores();
+      if(PlayerController.playerEscaped == false) {
+        checkForHighScores();
+      }
+      else {
+        getSavedScores();
 
+      }
     }
 
     // Update is called once per frame

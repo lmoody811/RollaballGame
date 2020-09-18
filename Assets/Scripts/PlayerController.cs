@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public GameObject inputField;
     public GameObject enterBTN;
     public static string playerName;
+    public static bool playerEscaped;
 
 
     // Start is called before the first frame update
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
         inputField.SetActive(false);
         enterBTN.SetActive(false);
+        playerEscaped = false;
     }
 
     void OnMove(InputValue movementValue)
@@ -56,6 +58,7 @@ public class PlayerController : MonoBehaviour
 
         if(Keyboard.current.escapeKey.wasPressedThisFrame) {
           SceneManager.LoadScene("Main Menu");
+          playerEscaped = true;
         }
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
 

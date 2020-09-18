@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Futura SDF
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   hashCode: 1672530256
   material: {fileID: 3635485412340993945}
   materialHashCode: 671163248
@@ -1305,7 +1305,7 @@ MonoBehaviour:
     m_Width: 144
     m_Height: 779
   m_fontInfo:
-    Name:
+    Name: 
     PointSize: 0
     Scale: 0
     CharacterCount: 0
@@ -4279,7 +4279,7 @@ MonoBehaviour:
   fallbackFontAssets: []
   m_FallbackFontAssetTable: []
   m_CreationSettings:
-    sourceFontFileName:
+    sourceFontFileName: 
     sourceFontFileGUID: 7ddad43611e964deebd99e93d7e89d62
     pointSizeSamplingMode: 0
     pointSize: 90
@@ -4288,9 +4288,9 @@ MonoBehaviour:
     atlasWidth: 1024
     atlasHeight: 1024
     characterSetSelectionMode: 7
-    characterSequence:
-    referencedFontAssetGUID:
-    referencedTextAssetGUID:
+    characterSequence: 
+    referencedFontAssetGUID: 
+    referencedTextAssetGUID: 
     fontStyle: 0
     fontStyleModifier: 0
     renderMode: 4165
@@ -4367,7 +4367,7 @@ Texture2D:
     serializedVersion: 2
     offset: 0
     size: 0
-    path:
+    path: 
 --- !u!21 &3635485412340993945
 Material:
   serializedVersion: 6
@@ -4377,7 +4377,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Futura Atlas Material
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
-  m_ShaderKeywords:
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -4433,7 +4433,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.24
+    - _OutlineWidth: 0.31
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.9

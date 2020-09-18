@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
     private bool newStar = false;
     private float startTime;
     private float specialCountdown = 5.0f;
+    public GameObject inputField;
+    public GameObject enterBTN;
+    string playerName;
+
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +32,9 @@ public class PlayerController : MonoBehaviour
         count = 0;
 
         SetCountText();
+
+        inputField.SetActive(false);
+        enterBTN.SetActive(false);
     }
 
     void OnMove(InputValue movementValue)
@@ -62,7 +69,21 @@ public class PlayerController : MonoBehaviour
             updateTimer();
         }
 
+        if(Timer.keepTimer == false && Timer.playerWon == false) {
+          showInputField();         //need to fix this somehow
+        }
+    }
 
+    private void showInputField() {
+      inputField.SetActive(true);
+      enterBTN.SetActive(true);
+    }
+
+    public void getName() {
+      playerName = inputField.GetComponent<TMP_InputField>().text;
+
+      Debug.Log(playerName);
+      SceneManager.LoadScene("Main Menu");
 
 
     }

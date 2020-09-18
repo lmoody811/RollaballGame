@@ -85,7 +85,7 @@ public class MainMenu : MonoBehaviour
           highScores[PlayerController.playerName] = PlayerController.count;
           highScores = highScores.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
           if(highScores.Count == 11) {
-              highScores.Remove(highScores.Keys.Last());
+              highScores.Remove(highScores.Keys.First());
       }
     }
 

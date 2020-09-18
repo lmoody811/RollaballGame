@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private float startTime;
     private float specialCountdown = 5.0f;
     public GameObject inputField;
+    public GameObject inputTitle;
     public GameObject enterBTN;
     public static string playerName;
     public static bool playerEscaped;
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
         SetCountText();
 
         inputField.SetActive(false);
+        inputTitle.SetActive(false);
         enterBTN.SetActive(false);
         playerEscaped = false;
     }
@@ -78,6 +80,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void showInputField() {
+      inputTitle.SetActive(true);
       inputField.SetActive(true);
       enterBTN.SetActive(true);
     }

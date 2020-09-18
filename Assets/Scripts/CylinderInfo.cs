@@ -21,6 +21,6 @@ public class CylinderInfo : MonoBehaviour
         speed = r.velocity.magnitude;
         AngularSpeed = r.angularVelocity.magnitude;
 
-        r.AddTorque(Vector3.forward);
+        r.AddTorque(Vector3.back);
     }
 }

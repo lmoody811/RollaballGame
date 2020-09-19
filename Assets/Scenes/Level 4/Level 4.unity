@@ -4886,6 +4886,7 @@ MonoBehaviour:
   inputField: {fileID: 0}
   inputTitle: {fileID: 0}
   enterBTN: {fileID: 0}
+  currentLevel: Level4
   jump: {x: 0, y: 0, z: 0}
   jumpForce: 2
   isGrounded: 0
@@ -4939,6 +4940,7 @@ MonoBehaviour:
   specialStarfish: {fileID: 1274336325}
   level: {fileID: 1565566529}
   newGameScene: Level 3
+  winningNumber: 10
 --- !u!1 &1637754934 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7726208980626243359, guid: c5efe718bc34a8f4eab334e24e9cd6dd, type: 3}

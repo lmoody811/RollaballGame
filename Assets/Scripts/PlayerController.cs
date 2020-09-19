@@ -25,12 +25,14 @@ public class PlayerController : MonoBehaviour
     public GameObject enterBTN;
     public static string playerName;
     public static bool playerEscaped;
+    public string currentLevel;
+    public string newGameScene;
 
     // jumping variables
     public Vector3 jump;
     public float jumpForce = 1.5f;
     public bool isGrounded;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +40,12 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 1.5f, 0.0f);
 
-        count = 0;
+        if(currentLevel == "Level1") {
+          count = 0;
+        }
+        else {
+          //keep count the same
+        }
 
         SetCountText();
 
@@ -101,7 +108,10 @@ public class PlayerController : MonoBehaviour
           showInputField();         //need to fix this somehow
         }
 
-            
+        if(Timer.wonLevel == true) {
+          addBonusPoints();
+          SceneManager.LoadScene(newGameScene);
+        }
 
     }
 
@@ -158,6 +168,16 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
+    void addBonusPoints() {
+      if(currentLevel == "Level1") {            //adds bonus points for winning a level
+        count += 5;
+      }
+      else if(currentLevel == "Level2") {
+        count += 10;
+      }
+      else if(currentLevel == "Level3") {
+        count += 15;
+      }
+    }
 
 }

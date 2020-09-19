@@ -4536,6 +4536,11 @@ MonoBehaviour:
   inputField: {fileID: 1271391176}
   inputTitle: {fileID: 1525263121}
   enterBTN: {fileID: 1374653926}
+  currentLevel: Level1
+  newGameScene: Level 2
+  jump: {x: 0, y: 0, z: 0}
+  jumpForce: 1.5
+  isGrounded: 0
 --- !u!114 &1633978157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4579,13 +4584,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 1295538758}
-  countdown: 10
+  countdown: 50
   keepTimer: 0
-  playerWon: 0
   cube: {fileID: 830843494}
   specialStarfish: {fileID: 1274336325}
   level: {fileID: 1565566529}
-  newGameScene: Level 2
+  winningNumber: 12
 --- !u!1 &1646153632
 GameObject:
   m_ObjectHideFlags: 0

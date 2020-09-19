@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
     public GameObject newGameBTN;
     public GameObject highScoresBTN;
     public GameObject quitGameBTN;
+    public GameObject developerNames;
     public TextMeshProUGUI highScoreTitles;
     public TextMeshProUGUI highScoreNames;
     public TextMeshProUGUI highScorePoints;
@@ -54,6 +55,7 @@ public class MainMenu : MonoBehaviour
         newGameBTN.SetActive(false);
         highScoresBTN.SetActive(false);
         quitGameBTN.SetActive(false);
+        developerNames.SetActive(false);
         gameTitleText.text = "";
 
         scoreTitleText.text = "High Scores";
@@ -148,5 +150,6 @@ public class MainMenu : MonoBehaviour
         newGameBTN.SetActive(true);
         quitGameBTN.SetActive(true);
         highScoresBTN.SetActive(true);
+        developerNames.SetActive(true);
     }
 }

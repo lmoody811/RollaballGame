@@ -2461,7 +2461,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.685
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -3987,7 +3987,7 @@ TerrainCollider:
   m_GameObject: {fileID: 1433100981}
   m_Material: {fileID: 0}
   m_Enabled: 1
-  m_TerrainData: {fileID: 15600000, guid: 48e2574f18e922e4da5057c42b0b4a9c, type: 2}
+  m_TerrainData: {fileID: 0}
   m_EnableTreeColliders: 1
 --- !u!218 &1433100983
 Terrain:

@@ -86,6 +86,12 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
         }
+
+        if (Keyboard.current.Alpha2.wasPressedThisFrame)
+        //if(Input.GetKey("1"))
+        {
+            SceneManager.LoadScene("Level 1");
+        }
     }
 
     void FixedUpdate ()

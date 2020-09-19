@@ -3987,7 +3987,7 @@ TerrainCollider:
   m_GameObject: {fileID: 1433100981}
   m_Material: {fileID: 0}
   m_Enabled: 1
-  m_TerrainData: {fileID: 0}
+  m_TerrainData: {fileID: 15600000, guid: d5a12f31c142bc44c8bbb58b95c8ea16, type: 2}
   m_EnableTreeColliders: 1
 --- !u!218 &1433100983
 Terrain:
@@ -4337,6 +4337,7 @@ GameObject:
   - component: {fileID: 1633978157}
   - component: {fileID: 1633978156}
   - component: {fileID: 1633978158}
+  - component: {fileID: 1633978159}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4450,11 +4451,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   countText: {fileID: 770843485}
+  bonusText: {fileID: 0}
   inputField: {fileID: 0}
   inputTitle: {fileID: 0}
   enterBTN: {fileID: 0}
-  currentLevel: Level3
-  newGameScene: Level 4
+  currentLevel: 
+  newGameScene: 
   jump: {x: 0, y: 0, z: 0}
   jumpForce: 1.5
   isGrounded: 0
@@ -4506,7 +4508,23 @@ MonoBehaviour:
   cube: {fileID: 830843494}
   specialStarfish: {fileID: 1274336325}
   level: {fileID: 1565566529}
-  winningNumber: 10
+  winningNumber: 0
+--- !u!114 &1633978159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633978150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c164eb71530f05449fdd71315b532b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Level2: Level 2
+  Level3: 
+  Level4: 
+  uiElement: {fileID: 0}
 --- !u!1 &1646153632
 GameObject:
   m_ObjectHideFlags: 0
@@ -4859,6 +4877,7 @@ GameObject:
   - component: {fileID: 1765902082}
   - component: {fileID: 1765902085}
   - component: {fileID: 1765902086}
+  - component: {fileID: 1765902087}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4975,6 +4994,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1633978150}
+--- !u!114 &1765902087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765902081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c164eb71530f05449fdd71315b532b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Level2: 
+  Level3: 
+  Level4: 
+  uiElement: {fileID: 0}
 --- !u!1 &1901100142
 GameObject:
   m_ObjectHideFlags: 0

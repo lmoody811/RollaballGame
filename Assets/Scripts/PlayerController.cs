@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections.Specialized;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,11 +26,17 @@ public class PlayerController : MonoBehaviour
     public static string playerName;
     public static bool playerEscaped;
 
+    // jumping variables
+    public Vector3 jump;
+    public float jumpForce = 2.0f;
+    public bool isGrounded;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        jump = new Vector3(0.0f, 2.0f, 0.0f);
 
         count = 0;
 
@@ -55,6 +62,22 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    // Detecting when is player grounded
+    void OnCollisionStay()
+    {
+        isGrounded = true;
+    }
+
+    void Update()
+    {
+        // jumping once when it's grounded
+       if (Keyboard.current.spaceKey.isPressed && isGrounded)
+        {
+            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
+        }
+    }
+
     void FixedUpdate ()
     {
 
@@ -77,6 +100,9 @@ public class PlayerController : MonoBehaviour
         if(Timer.showInputBox == true) {
           showInputField();         //need to fix this somehow
         }
+
+            
+
     }
 
     private void showInputField() {
@@ -131,6 +157,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
 
 
 }

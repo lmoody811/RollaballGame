@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
         }
 
-        if (Keyboard.current.Alpha2.wasPressedThisFrame)
+        if (Keyboard.current.jKey.wasPressedThisFrame)
         //if(Input.GetKey("1"))
         {
             SceneManager.LoadScene("Level 1");

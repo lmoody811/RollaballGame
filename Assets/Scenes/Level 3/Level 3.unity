@@ -5169,10 +5169,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   countText: {fileID: 770843485}
+  bonusText: {fileID: 0}
   inputField: {fileID: 0}
   inputTitle: {fileID: 0}
   enterBTN: {fileID: 0}
   currentLevel: Level3
+  newGameScene: 
   jump: {x: 0, y: 0, z: 0}
   jumpForce: 1.5
   isGrounded: 0
@@ -5221,11 +5223,9 @@ MonoBehaviour:
   timer: {fileID: 1295538758}
   countdown: 60
   keepTimer: 0
-  playerWon: 0
   cube: {fileID: 830843494}
   specialStarfish: {fileID: 1274336325}
   level: {fileID: 1565566529}
-  newGameScene: Level 3
   winningNumber: 10
 --- !u!1 &1646153632
 GameObject:

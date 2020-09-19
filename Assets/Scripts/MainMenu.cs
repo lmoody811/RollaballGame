@@ -25,7 +25,6 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
       backBTN.SetActive(false);
       scoreTitleText.text = "";
       highScoreNames.text = "";
@@ -85,13 +84,12 @@ public class MainMenu : MonoBehaviour
       }
       else if(gamePlayed == true){
           highScores[PlayerController.playerName] = PlayerController.count;
-          highScores = highScores.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
-          if(highScores.Count == 11) {
-              highScores.Remove(highScores.Keys.First());
-      }
+          highScores = highScores.OrderByDescending(x => x.Value).ThenByDescending(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
     }
 
-      highScores = highScores.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+    if(highScores.Count == 11) {
+        highScores.Remove(highScores.Keys.Last());
+} 
       saveScores();
     }
 

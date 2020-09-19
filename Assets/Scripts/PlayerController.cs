@@ -19,7 +19,12 @@ public class PlayerController : MonoBehaviour
     private bool newStar = false;
     private float startTime;
     private float specialCountdown = 5.0f;
-    private
+    public GameObject inputField;
+    public GameObject inputTitle;
+    public GameObject enterBTN;
+    public static string playerName;
+    public static bool playerEscaped;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +34,11 @@ public class PlayerController : MonoBehaviour
         count = 0;
 
         SetCountText();
+
+        inputField.SetActive(false);
+        inputTitle.SetActive(false);
+        enterBTN.SetActive(false);
+        playerEscaped = false;
     }
 
     void OnMove(InputValue movementValue)
@@ -50,6 +60,7 @@ public class PlayerController : MonoBehaviour
 
         if(Keyboard.current.escapeKey.wasPressedThisFrame) {
           SceneManager.LoadScene("Main Menu");
+          playerEscaped = true;
         }
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
 
@@ -63,7 +74,22 @@ public class PlayerController : MonoBehaviour
             updateTimer();
         }
 
+        if(Timer.showInputBox == true) {
+          showInputField();         //need to fix this somehow
+        }
+    }
 
+    private void showInputField() {
+      inputTitle.SetActive(true);
+      inputField.SetActive(true);
+      enterBTN.SetActive(true);
+    }
+
+    public void getName() {
+      playerName = inputField.GetComponent<TMP_InputField>().text;
+
+      Debug.Log(playerName);
+      SceneManager.LoadScene("Main Menu");
 
 
     }

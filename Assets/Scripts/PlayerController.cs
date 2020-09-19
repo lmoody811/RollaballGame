@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 0;
     public TextMeshProUGUI countText;
+    public TextMeshProUGUI bonusText;
 
     private Rigidbody rb;
     private Dictionary<int, string> highScores = new Dictionary<int, string>();
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
     public static bool playerEscaped;
     public string currentLevel;
     public string newGameScene;
+    private string bonus;
 
     // jumping variables
     public Vector3 jump;
@@ -48,6 +50,7 @@ public class PlayerController : MonoBehaviour
         }
 
         SetCountText();
+        bonusText.text = "";
 
         inputField.SetActive(false);
         inputTitle.SetActive(false);
@@ -110,7 +113,7 @@ public class PlayerController : MonoBehaviour
 
         if(Timer.wonLevel == true) {
           addBonusPoints();
-          SceneManager.LoadScene(newGameScene);
+          StartCoroutine(waitForNextLevel());
         }
 
     }
@@ -170,14 +173,27 @@ public class PlayerController : MonoBehaviour
 
     void addBonusPoints() {
       if(currentLevel == "Level1") {            //adds bonus points for winning a level
-        count += 5;
+        bonus = "5";
       }
       else if(currentLevel == "Level2") {
-        count += 10;
+        bonus = "10";
       }
       else if(currentLevel == "Level3") {
-        count += 15;
+        bonus = "15";
       }
+
+      bonusText.text = "+ " + bonus + " points";
+    }
+
+    IEnumerator waitForNextLevel()
+    {
+
+        yield return new WaitForSeconds(4);
+
+        count += int.Parse(bonus);
+
+        SceneManager.LoadScene(newGameScene);
+
     }
 
 }

@@ -7,6 +7,7 @@ TagManager:
   - PickUp
   - Fire
   - SpecialPickUp
+  - JumpPad
   layers:
   - Default
   - TransparentFX

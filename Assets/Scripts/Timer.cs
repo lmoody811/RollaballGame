@@ -11,18 +11,20 @@ public class Timer : MonoBehaviour
     private float startTime;
     public float countdown;
     public bool keepTimer;
-    public bool playerWon;
+    //public bool playerWon;
     private int playerCount;
     public GameObject cube;
     public GameObject specialStarfish;
     public GameObject level;
-    public string newGameScene;
     private bool showGame;
     public static bool showInputBox;
+    public int winningNumber;
+    public static bool wonLevel;
 
     // Start is called before the first frame update
     void Start()
     {
+        wonLevel = false;
         timer.text = "Timer: " + countdown + ".0";
         showGame = true;
         MainMenu.gamePlayed = true;
@@ -36,15 +38,15 @@ public class Timer : MonoBehaviour
     {
         playerCount = PlayerController.count;
 
-        if (playerCount == 12)
+        if (playerCount == winningNumber)
         {
-            playerWins();
+            playerWonLevel();
         }
         else if (keepTimer == true)
         {
             updateTimer();
         }
-        else if(keepTimer == false && playerWon == false && showGame == false)
+        else if(keepTimer == false && wonLevel == false && showGame == false)
         {
             playerLoses();
         }
@@ -54,7 +56,6 @@ public class Timer : MonoBehaviour
     {
         startTime = Time.time;
         keepTimer = true;
-        playerWon = false;
     }
 
     void updateTimer()
@@ -77,15 +78,12 @@ public class Timer : MonoBehaviour
         }
 
     }
-    private void playerWins()
+    private void playerWonLevel()
     {
         string countdownTime = (countdown % 60).ToString("f1");
         timer.text = "Timer: " + countdownTime;
         keepTimer = false;
-        playerWon = true;
-
-
-        SceneManager.LoadScene(newGameScene);
+        wonLevel = true;
 
     }
 

@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections.Specialized;
 
 public class PlayerController : MonoBehaviour
 {
     public float speed = 0;
     public TextMeshProUGUI countText;
+    public TextMeshProUGUI bonusText;
 
     private Rigidbody rb;
     private Dictionary<int, string> highScores = new Dictionary<int, string>();
@@ -24,16 +26,31 @@ public class PlayerController : MonoBehaviour
     public GameObject enterBTN;
     public static string playerName;
     public static bool playerEscaped;
+    public string currentLevel;
+    public string newGameScene;
+    private string bonus;
+
+    // jumping variables
+    public Vector3 jump;
+    public float jumpForce = 1.5f;
+    public bool isGrounded;
 
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        jump = new Vector3(0.0f, 1.5f, 0.0f);
 
-        count = 0;
+        if(currentLevel == "Level1") {
+          count = 0;
+        }
+        else {
+          //keep count the same
+        }
 
         SetCountText();
+        bonusText.text = "";
 
         inputField.SetActive(false);
         inputTitle.SetActive(false);
@@ -53,6 +70,22 @@ public class PlayerController : MonoBehaviour
     {
         countText.text = "Points: " + count.ToString();
 
+    }
+
+    // Detecting when is player grounded
+    void OnCollisionStay()
+    {
+        isGrounded = true;
+    }
+
+    void Update()
+    {
+        // jumping once when it's grounded
+       if (Keyboard.current.spaceKey.isPressed && isGrounded)
+        {
+            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
+        }
     }
 
     void FixedUpdate ()
@@ -77,6 +110,12 @@ public class PlayerController : MonoBehaviour
         if(Timer.showInputBox == true) {
           showInputField();         //need to fix this somehow
         }
+
+        if(Timer.wonLevel == true) {
+          addBonusPoints();
+          StartCoroutine(waitForNextLevel());
+        }
+
     }
 
     private void showInputField() {
@@ -132,5 +171,29 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    void addBonusPoints() {
+      if(currentLevel == "Level1") {            //adds bonus points for winning a level
+        bonus = "5";
+      }
+      else if(currentLevel == "Level2") {
+        bonus = "10";
+      }
+      else if(currentLevel == "Level3") {
+        bonus = "15";
+      }
+
+      bonusText.text = "+ " + bonus + " points";
+    }
+
+    IEnumerator waitForNextLevel()
+    {
+
+        yield return new WaitForSeconds(4);
+
+        count += int.Parse(bonus);
+
+        SceneManager.LoadScene(newGameScene);
+
+    }
 
 }

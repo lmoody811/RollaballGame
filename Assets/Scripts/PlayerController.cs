@@ -80,17 +80,29 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // jumping once when it's grounded
+       
        if (Keyboard.current.spaceKey.isPressed && isGrounded)
         {
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
         }
 
-        if (Keyboard.current.jKey.wasPressedThisFrame)
-        //if(Input.GetKey("1"))
+        // if (Keyboard.current.jKey.wasPressedThisFrame)
+       if (Keyboard.current.FindKeyOnCurrentKeyboardLayout("1").isPressed)        
         {
             SceneManager.LoadScene("Level 1");
+        }
+        if (Keyboard.current.FindKeyOnCurrentKeyboardLayout("2").isPressed)
+        {
+            SceneManager.LoadScene("Level 2");
+        }
+        if (Keyboard.current.FindKeyOnCurrentKeyboardLayout("3").isPressed)
+        {
+            SceneManager.LoadScene("Level 3");
+        }
+        if (Keyboard.current.FindKeyOnCurrentKeyboardLayout("4").isPressed)
+        {
+            SceneManager.LoadScene("Level 4");
         }
     }
 

@@ -122,7 +122,7 @@ public class Timer : MonoBehaviour
         winningNumber = 10 + PlayerController.count;
       }
       else if(currentLevel == "3") {
-        winningNumber = 15 + PlayerController.count;
+        winningNumber = 11 + PlayerController.count;
       }
       else if(currentLevel == "4") {
         winningNumber = 15 + PlayerController.count;

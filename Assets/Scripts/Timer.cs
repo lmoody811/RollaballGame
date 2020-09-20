@@ -18,8 +18,9 @@ public class Timer : MonoBehaviour
     public GameObject level;
     private bool showGame;
     public static bool showInputBox;
-    public int winningNumber;
+    public static int winningNumber;
     public static bool wonLevel;
+    public string currentLevel;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class Timer : MonoBehaviour
         MainMenu.gamePlayed = true;
         showInputBox = false;
 
+        declareWinningNumbers();
         StartCoroutine(showLevel());
     }
 
@@ -37,7 +39,7 @@ public class Timer : MonoBehaviour
     void Update()
     {
         playerCount = PlayerController.count;
-
+        
         if (playerCount == winningNumber)
         {
             playerWonLevel();
@@ -112,6 +114,21 @@ public class Timer : MonoBehaviour
 
     }
 
+    private void declareWinningNumbers() {
+      if(currentLevel == "1") {
+        winningNumber = 12 + PlayerController.count;
+      }
+      else if(currentLevel == "2") {
+        winningNumber = 5 + PlayerController.count;
+      }
+      else if(currentLevel == "3") {
+        winningNumber = 15 + PlayerController.count;
+      }
+      else if(currentLevel == "4") {
+        winningNumber = 15 + PlayerController.count;
+      }
+
+    }
 
 
 }

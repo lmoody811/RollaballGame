@@ -69,7 +69,6 @@ public class PlayerController : MonoBehaviour
     void SetCountText()
     {
         countText.text = "Points: " + count.ToString();
-
     }
 
     // Detecting when is player grounded
@@ -80,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-       
+
        if (Keyboard.current.spaceKey.isPressed && isGrounded)
         {
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
@@ -88,7 +87,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // if (Keyboard.current.jKey.wasPressedThisFrame)
-       if (Keyboard.current.FindKeyOnCurrentKeyboardLayout("1").isPressed)        
+       if (Keyboard.current.FindKeyOnCurrentKeyboardLayout("1").isPressed)
         {
             SceneManager.LoadScene("Level 1");
         }
@@ -113,6 +112,7 @@ public class PlayerController : MonoBehaviour
           SceneManager.LoadScene("Main Menu");
           playerEscaped = true;
         }
+
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
 
         if(increaseSpeed == false)
@@ -205,7 +205,6 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator waitForNextLevel()
     {
-
         yield return new WaitForSeconds(4);
 
         count += int.Parse(bonus);

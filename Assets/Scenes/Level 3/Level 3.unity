@@ -5226,7 +5226,7 @@ MonoBehaviour:
   cube: {fileID: 830843494}
   specialStarfish: {fileID: 1274336325}
   level: {fileID: 1565566529}
-  winningNumber: 10
+  currentLevel: 3
 --- !u!1 &1646153632
 GameObject:
   m_ObjectHideFlags: 0

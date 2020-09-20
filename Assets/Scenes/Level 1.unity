@@ -767,8 +767,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -15.1, y: 0}
+  m_SizeDelta: {x: -30.100891, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &279228370
 MonoBehaviour:
@@ -855,7 +855,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -30.10083, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2722,7 +2722,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 15.999994}
+  m_AnchoredPosition: {x: 35, y: 15.999994}
   m_SizeDelta: {x: 635.7974, y: 136.84637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1271391178
@@ -3297,8 +3297,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000015259, y: -144}
-  m_SizeDelta: {x: 198.08179, y: 103.30516}
+  m_AnchoredPosition: {x: 35, y: -142.14}
+  m_SizeDelta: {x: 265.2301, y: 107.936066}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1374653928
 MonoBehaviour:
@@ -4591,7 +4591,7 @@ MonoBehaviour:
   cube: {fileID: 830843494}
   specialStarfish: {fileID: 1274336325}
   level: {fileID: 1565566529}
-  winningNumber: 12
+  currentLevel: 1
 --- !u!1 &1646153632
 GameObject:
   m_ObjectHideFlags: 0

@@ -156,6 +156,7 @@ public class PlayerController : MonoBehaviour
       SceneManager.LoadScene("Main Menu");
     }
 
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("PickUp"))
@@ -174,6 +175,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision other) {
+      if(other.gameObject.CompareTag("Crab"))
+      {
+          if(count <= 3 && count >= 0 ) {
+            //don't deduct points so they don't get a negative score
+          }
+          else {
+            Timer.winningNumber = Timer.winningNumber - 4;
+            count -= 4;         //deducts 4 points when hitting a crab
+            SetCountText();
+          }
+      }
+
+    }
     void updateTimer()
     {
         if(newStar == false)

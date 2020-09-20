@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 0;
     public TextMeshProUGUI countText;
     public TextMeshProUGUI bonusText;
+    public TextMeshProUGUI winText;
 
     private Rigidbody rb;
     private Dictionary<int, string> highScores = new Dictionary<int, string>();
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour
 
         SetCountText();
         bonusText.text = "";
+        winText.text = "";
 
         inputField.SetActive(false);
         inputTitle.SetActive(false);
@@ -126,29 +128,32 @@ public class PlayerController : MonoBehaviour
         }
 
         if(Timer.showInputBox == true) {
-          showInputField();         //need to fix this somehow
+          showInputField();
         }
 
         if(Timer.wonLevel == true) {
-          addBonusPoints();
-          StartCoroutine(waitForNextLevel());
+          if(currentLevel != "Level4") {
+            addBonusPoints();
+            StartCoroutine(waitForNextLevel());
+          }
+          else {
+            playerWonGame();
+            enabled = false;
+          }
         }
 
     }
 
     private void showInputField() {
-      inputTitle.SetActive(true);
       inputField.SetActive(true);
       enterBTN.SetActive(true);
+      inputTitle.SetActive(true);
     }
 
     public void getName() {
       playerName = inputField.GetComponent<TMP_InputField>().text;
 
-      Debug.Log(playerName);
       SceneManager.LoadScene("Main Menu");
-
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -201,6 +206,14 @@ public class PlayerController : MonoBehaviour
       }
 
       bonusText.text = "+ " + bonus + " points";
+    }
+
+    void playerWonGame() {
+      winText.text = "Congrats! You won! Please enter your name.";
+      inputField.SetActive(true);
+      enterBTN.SetActive(true);
+
+      count += 30;
     }
 
     IEnumerator waitForNextLevel()
